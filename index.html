@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+    <title>Lanus Fight Club</title>
+</head>
+
+<body>
+    <nav><img src="logo.png" alt="Lanus Fight Club" title="Héroes y Villanos: ABM de Personas."></nav>
+    <div id="table-container" class="container">
+        <div class="box table-box">
+            <header>Listado de Héroes y Villanos</header>
+            <div class="field select">
+                <label for="tipo">Filtrar por: </label>
+                <select name="tipo" id="cmbfilter">
+                    <option value="all">Todos</option>
+                    <option value="heroes">Héroes</option>
+                    <option value="villains">Villanos</option>
+                </select>
+            </div>
+            <div class="field input">
+                <label for="promedio">Calcular Edad Promedio: </label>
+                <div class="row">
+                    <input type="text" name="promedio" id="txtresultado">
+                    <button id="btncalcular">Calcular</button>
+                </div>
+            </div>
+            <div class="row chk-div">
+            <p>Mostrar Columnas:</p>
+                <div>
+                    <div class="option">
+                        <input type="checkbox" name="column1" id="chk0" checked="true">
+                        <label for="column1">ID</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column2" id="chk1" checked="true">
+                        <label for="column2">Nombre</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column3" id="chk2" checked="true">
+                        <label for="column3">Apellido</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column4" id="chk3" checked="true">
+                        <label for="column4">Edad</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column5" id="chk4" checked="true">
+                        <label for="column5">AlterEgo</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="option">
+                        <input type="checkbox" name="column6" id="chk5" checked="true">
+                        <label for="column6">Ciudad</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column7" id="chk6" checked="true">
+                        <label for="column7">Publicado</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column8" id="chk7" checked="true">
+                        <label for="column8">Enemigo</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column9" id="chk8" checked="true">
+                        <label for="column9">Robos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="column10" id="chk9" checked="true">
+                        <label for="column10">Asesinatos</label>
+                    </div>
+                </div>
+            </div>
+            <table id="main_table">
+                <colgroup>
+                    <col id="col0" class="small">
+                    <col id="col1">
+                    <col id="col2">
+                    <col id="col3" class="small">
+                    <col id="col4">
+                    <col id="col5">
+                    <col id="col6">
+                    <col id="col7">
+                    <col id="col8">
+                    <col id="col9">
+                </colgroup>
+                <tr id="table_header">
+                    <th id="th0">ID</th>
+                    <th id="th1">Nombre</th>
+                    <th id="th2">Apellido</th>
+                    <th id="th3">Edad</th>
+                    <th id="th4">AlterEgo</th>
+                    <th id="th5">Ciudad</th>
+                    <th id="th6">Publicado</th>
+                    <th id="th7">Enemigo</th>
+                    <th id="th8">Robos</th>
+                    <th id="th9">Asesinatos</th>
+                </tr>
+            </table>
+            <div class="btn">
+                <button id="btn_add">Agregar</button>
+            </div>
+        </div>
+    </div>
+    <div id="form-container" class="container hidden">
+        <div class="box form-box">
+            <header>ABM Héroes y Villanos</header>
+            <form>
+                <div class="field input">
+                    <label for="id">Id: </label>
+                    <input type="text" name="id" id="field_id" value="" disabled="true" required>
+                    <p id="error_id" class="error unactive">error</p>
+                </div>
+                <div class="field input">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" name="nombre" id="field_nombre" required minlength="2" maxlength="50" pattern="[A-Za-zñÑáéíóóÁÉÍÓÚüÜ ]{2,50}">
+                    <p id="error_nombre" class="error unactive">error</p>
+                </div>
+                <div class="field input">
+                    <label for="apellido">Apellido: </label>
+                    <input type="text" name="apellido" id="field_apellido" required minlength="2" maxlength="50" pattern="[A-Za-zñÑáéíóóÁÉÍÓÚüÜ ]{2,50}">
+                    <p id="error_apellido" class="error unactive">error</p>
+                </div>
+                <div class="field input">
+                    <label for="edad">Edad: </label>
+                    <input type="number" name="edad" id="field_edad" required min="1">
+                    <p id="error_edad" class="error unactive">error</p>
+                </div>
+                <div class="field select custom-select">
+                    <label for="tipo">Tipo: </label>
+                    <select name="tipo" id="field_tipo" required>
+                        <option value="tipo1">Héroe</option>
+                        <option value="tipo2">Villano</option>
+                    </select>
+                    <p id="error_tipo" class="error unactive">error</p>
+                </div>
+                <div id="input_alterego" class="field input">
+                    <label for="alterego">Alter Ego: </label>
+                    <input type="text" name="alterego" id="field_alterego" required minlength="2" maxlength="50" pattern="[A-Za-zñÑáéíóóÁÉÍÓÚüÜ ]{2,50}">
+                    <p id="error_alterego" class="error unactive">error</p>
+                </div>
+                <div id="input_ciudad" class="field input">
+                    <label for="ciudad">Ciudad: </label>
+                    <input type="text" name="ciudad" id="field_ciudad" required minlength="2" maxlength="50" pattern="[A-Za-zñÑáéíóóÁÉÍÓÚüÜ ]{2,50}">
+                    <p id="error_ciudad" class="error unactive">error</p>
+                </div>
+                <div id="input_publicado" class="field input">
+                    <label for="publicado">Publicado: </label>
+                    <input type="number" name="publicado" id="field_publicado" required min="1940">
+                    <p id="error_publicado" class="error unactive">error</p>
+                </div>
+                <div id="input_enemigo" class="field input hidden">
+                    <label for="enemigo">Enemigos: </label>
+                    <input type="text" name="enemigo" id="field_enemigo" required minlength="2" maxlength="50" pattern="[A-Za-zñÑáéíóóÁÉÍÓÚüÜ ]{2,50}">
+                    <p id="error_enemigo" class="error unactive">error</p>
+                </div>
+                <div id="input_robos" class="field input hidden">
+                    <label for="robos">Robos: </label>
+                    <input type="number" name="robos" id="field_robos" required min="0">
+                    <p id="error_robos" class="error unactive">error</p>
+                </div>
+                <div id="input_asesinatos" class="field input hidden">
+                    <label for="asesinatos">Asesinatos: </label>
+                    <input type="number" name="telefono" id="field_asesinatos" required min="0">
+                    <p id="error_asesinatos" class="error unactive">error</p>
+                </div>
+            </form>
+            <div class="field btn">
+                <button id="btn_accept">Aceptar</button>
+                <button id="btn_cancel">Cancelar</button>
+                <button id="btn_delete" class="dangerzone">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
